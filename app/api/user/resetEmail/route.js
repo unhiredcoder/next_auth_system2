@@ -25,7 +25,7 @@ export const POST = async (NextRequest) => {
       return new NextResponse.json({ status: 'User Not Exists!!' }, { status: 404 });
     }
     
-    const token = jwt.sign({ Email: oldUser.Email, id: oldUser._id }, "secret", {
+    const token = jwt.sign({ Email: oldUser.Email, id: oldUser._id },process.env.JWT_SECRET, {
       expiresIn: '2m',
     });
     const Url = `${process.env.BASE_URL}/resetPassUi?id=${oldUser._id}&token=${token}`;

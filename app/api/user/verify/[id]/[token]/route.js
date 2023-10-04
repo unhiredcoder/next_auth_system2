@@ -5,7 +5,7 @@ export const GET = async (next,content) => {
     const { token } = content.params;
     console.log("🚀 ~ file: route.js:6 ~ GET ~ token:", token)
     try {
-        const tok=jwt.verify(token,"secret");
+        const tok=jwt.verify(token,process.env.JWT_SECRET);
         return NextResponse.json(({ message: 'Token Verified', tokenVerified: true }), { status: 200 });
     } catch (error) {
         console.error(error);

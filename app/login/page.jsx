@@ -41,7 +41,7 @@ const Login = () => {
       const response = await axios.post("/api/user/login", values);
       if (response.status === 200) {
         localStorage.setItem('userData', JSON.stringify(response.data));
-        router.push('/profile');
+        router.push('/');
         toast.success('Logged In successfully')
       }
     } catch (error) {

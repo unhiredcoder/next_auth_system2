@@ -49,10 +49,14 @@ export const POST = async (NextRequest) => {
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log('Error:', error);
-        res.status(500).send('Link sending failed.');
+        NextResponse.json({ message: 'link generation failed' }, {
+          status: 500,
+        });
       } else {
         console.log('Email sent:', info.response);
-        res.status(200).send('Link sent successfully.');
+        NextResponse.json({ message: 'link gen successfully' }, {
+          status: 200,
+        });
       }
     });
 
